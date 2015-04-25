@@ -2,6 +2,7 @@
 
 This is a feeble attempt at creating a C#/.NET Portable Library to consume data from and interact with NEST devices.
 
+**This is a work in progress**! 
 Currently some of the basics work, you can get information about devices, and you can adjust the temperature of a thermostat.  The groundwork is there, and the rest just needs to be added.
 
 ## Authorization
