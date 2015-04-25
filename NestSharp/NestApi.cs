@@ -44,7 +44,7 @@ namespace NestSharp
                 state);            
         }
 
-        public async Task GetAccessToken (string authorizationToken)
+        public async Task<string> GetAccessToken (string authorizationToken)
         {
             var url = string.Format (ACCESS_TOKEN_URL,
                           ClientId,
@@ -60,7 +60,7 @@ namespace NestSharp
             var r = await http.PostAsync (url, new FormUrlEncodedContent (v));
             var data = await r.Content.ReadAsStringAsync ();
 
-            var json = Newtonsoft.Json.Linq.JObject.Parse (data);
+            var json = JObject.Parse (data);
 
             if (json != null) {
 
@@ -72,7 +72,9 @@ namespace NestSharp
 
                     ExpiresAt = DateTime.UtcNow.AddSeconds (expiresIn);
                 }
-            }           
+            }   
+
+            return AccessToken;
         }
 
         void CheckAuth ()
