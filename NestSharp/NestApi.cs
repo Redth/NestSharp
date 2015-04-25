@@ -85,16 +85,17 @@ namespace NestSharp
             }
         }
 
-        public async Task<Devices> GetStructuresAndDevicesAsync ()
-        {
-            CheckAuth ();
-
-            var url = "https://developer-api.nest.com/?auth={0}";
-
-            var data = await http.GetStringAsync (string.Format (url, AccessToken));
-
-            return JsonConvert.DeserializeObject<Devices> (data);
-        }
+        //TODO: Get the right data enclosure for this call
+//        public async Task<Devices> GetStructuresAndDevicesAsync ()
+//        {
+//            CheckAuth ();
+//
+//            var url = "https://developer-api.nest.com/?auth={0}";
+//
+//            var data = await http.GetStringAsync (string.Format (url, AccessToken));
+//
+//            return JsonConvert.DeserializeObject<Devices> (data);
+//        }
 
         public async Task<Devices> GetDevicesAsync ()
         {
@@ -107,7 +108,7 @@ namespace NestSharp
             return JsonConvert.DeserializeObject<Devices> (data);
         }
 
-        public async Task<Devices> GetStructuresAsync ()
+        public async Task<Dictionary<string, Structure>> GetStructuresAsync ()
         {
             CheckAuth ();
 
@@ -115,7 +116,7 @@ namespace NestSharp
 
             var data = await http.GetStringAsync (string.Format (url, AccessToken));
 
-            return JsonConvert.DeserializeObject<Devices> (data);
+            return JsonConvert.DeserializeObject<Dictionary<string, Structure>> (data);
         }
             
         public async Task<Thermostat> GetThermostatAsync (string deviceId)

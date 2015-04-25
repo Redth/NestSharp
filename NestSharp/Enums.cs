@@ -43,5 +43,13 @@ namespace NestSharp
         High,
         Low
     }
+
+    public enum Away 
+    {
+        Home,
+        Away,
+        AutoAway,
+        Unknown
+    }
 }
 

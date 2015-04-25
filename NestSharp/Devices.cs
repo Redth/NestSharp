@@ -7,7 +7,6 @@ using System.Net.Http;
 
 namespace NestSharp
 {
-
     public class Devices
     {
         [JsonProperty ("thermostats")]
@@ -16,5 +15,4 @@ namespace NestSharp
         [JsonProperty ("smoke_co_alarms")]
         public Dictionary<string, SmokeCoAlarm> SmokeCoAlarms { get;set; }
     }
-    
 }

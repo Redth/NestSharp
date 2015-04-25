@@ -37,6 +37,7 @@
     <Compile Include="Thermostat.cs" />
     <Compile Include="SmokeCoAlarm.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Structure.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
