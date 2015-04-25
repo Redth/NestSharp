@@ -42,4 +42,11 @@ foreach (var t in devices.Thermostats) {
 }
 ```
 
-More methods and the rest of the data object models are coming soon!
+
+## // TODO:
+
+ - More object data models (*ahem* Company)
+ - OAuth with a non-empty callback url
+ - Actually write some tests for that nice little NUNit project
+ - Moar API coverage
+ - Sample app!
