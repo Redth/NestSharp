@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace NestSharp
 {
@@ -48,6 +49,7 @@ namespace NestSharp
     {
         Home,
         Away,
+        [EnumMember(Value = "auto-away")]
         AutoAway,
         Unknown
     }
