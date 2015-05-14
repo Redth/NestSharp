@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NestSharp.Tests", "NestSharp.Tests\NestSharp.Tests.csproj", "{1B27B8AF-33C1-4D48-8AEB-A867453F4B3F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NestSharp", "NestSharp\NestSharp.csproj", "{368C9C7E-B460-4434-BE8D-6D463F3DA92A}"
@@ -19,5 +21,8 @@ Global
 		{368C9C7E-B460-4434-BE8D-6D463F3DA92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{368C9C7E-B460-4434-BE8D-6D463F3DA92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{368C9C7E-B460-4434-BE8D-6D463F3DA92A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

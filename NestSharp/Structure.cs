@@ -39,6 +39,9 @@ namespace NestSharp
         [JsonProperty ("time_zone")]
         public string Timezone { get;set; }
 
+        [JsonProperty("eta")]
+        public Eta Eta { get; set; }
+
         //TODO: Implement devices and eta fields
     }
 }
