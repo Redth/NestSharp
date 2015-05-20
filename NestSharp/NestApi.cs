@@ -197,7 +197,16 @@ namespace NestSharp
             
             const string url = BASE_URL + "structures/{0}/eta.json?auth={1}";
             var formattedUrl = string.Format(url, structureId, AccessToken);
-            
+
+            var structure = (await GetStructuresAsync()).FirstOrDefault(x => x.Key == structureId).Value;
+
+            if (structure == null) {
+                throw new ArgumentException("Unknown Structure ID", structureId);
+            }
+            if (structure.Away == Away.Home) {
+                throw new InvalidOperationException("Can't set ETA when structure is  in Home mode");
+            }
+
             var json = JsonConvert.SerializeObject(new Eta {TripId = tripId, ArrivalWindowBegin = arrivalWindowBegin.ToUniversalTime(), ArrivalWindowEnd = arrivalWindowEnd.ToUniversalTime()});
 
             var r = await http.PutAsync(formattedUrl, new StringContent(json, Encoding.UTF8, "application/json"));
