@@ -207,10 +207,13 @@ namespace NestSharp
                 throw new InvalidOperationException("Can't set ETA when structure is  in Home mode");
             }
 
-            var json = JsonConvert.SerializeObject(new Eta {TripId = tripId, ArrivalWindowBegin = arrivalWindowBegin.ToUniversalTime(), ArrivalWindowEnd = arrivalWindowEnd.ToUniversalTime()});
+            var json = JsonConvert.SerializeObject(new Eta {
+                TripId = tripId, 
+                ArrivalWindowBegin = arrivalWindowBegin.ToUniversalTime(), 
+                ArrivalWindowEnd = arrivalWindowEnd.ToUniversalTime()});
 
-            var r = await http.PutAsync(formattedUrl, new StringContent(json, Encoding.UTF8, "application/json"));
-            r.EnsureSuccessStatusCode();
+            var result = await http.PutAsync(formattedUrl, new StringContent(json, Encoding.UTF8, "application/json"));
+            result.EnsureSuccessStatusCode();
 
             return true;
         }
