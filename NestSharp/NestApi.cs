@@ -46,18 +46,13 @@ namespace NestSharp
 
         public async Task<string> GetAccessToken (string authorizationToken)
         {
-            var url = string.Format (ACCESS_TOKEN_URL,
-                          ClientId,
-                          authorizationToken,
-                          ClientSecret);
-
             var v = new Dictionary<string, string> ();
             v.Add ("client_id", ClientId);
             v.Add ("code", authorizationToken);
             v.Add ("client_secret", ClientSecret);
             v.Add ("grant_type", "authorization_code");
 
-            var r = await http.PostAsync (url, new FormUrlEncodedContent (v));
+            var r = await http.PostAsync(ACCESS_TOKEN_URL, new FormUrlEncodedContent(v));
             var data = await r.Content.ReadAsStringAsync ();
 
             var json = JObject.Parse (data);
@@ -186,7 +181,42 @@ namespace NestSharp
             var data = await r.Content.ReadAsStringAsync ();
 
             return JObject.Parse (data);
-        }            
+        }
+
+        /// <summary>
+        /// Sets the ETA for the structure with the given structureId.
+        /// </summary>
+        /// <param name="structureId">The structureId to set the ETA for.</param>
+        /// <param name="tripId">A unique ID for the trip. If you want to update an ETA the same tripId must be used.</param>
+        /// <param name="arrivalWindowBegin"></param>
+        /// <param name="arrivalWindowEnd"></param>
+        /// <returns>True on success.</returns>
+        /// <exception cref=""></exception>
+        public async Task<bool> SetETA(string structureId, string tripId, DateTime arrivalWindowBegin, DateTime arrivalWindowEnd) {
+            CheckAuth();
+            
+            const string url = BASE_URL + "structures/{0}/eta.json?auth={1}";
+            var formattedUrl = string.Format(url, structureId, AccessToken);
+
+            var structure = (await GetStructuresAsync()).FirstOrDefault(x => x.Key == structureId).Value;
+
+            if (structure == null) {
+                throw new ArgumentException("Unknown Structure ID", structureId);
+            }
+            if (structure.Away == Away.Home) {
+                throw new InvalidOperationException("Can't set ETA when structure is  in Home mode");
+            }
+
+            var json = JsonConvert.SerializeObject(new Eta {
+                TripId = tripId, 
+                ArrivalWindowBegin = arrivalWindowBegin.ToUniversalTime(), 
+                ArrivalWindowEnd = arrivalWindowEnd.ToUniversalTime()});
+
+            var result = await http.PutAsync(formattedUrl, new StringContent(json, Encoding.UTF8, "application/json"));
+            result.EnsureSuccessStatusCode();
+
+            return true;
+        }
     }
 }
 
