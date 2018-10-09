@@ -3,3 +3,7 @@ bin/
 obj/
 *.suo
 *.userprefs
+.vs/NestSharp/v15/Server/sqlite3/storage.ide-wal
+.vs/NestSharp/v15/Server/sqlite3/storage.ide-shm
+.vs/NestSharp/v15/Server/sqlite3/storage.ide
+.vs/NestSharp/v15/Server/sqlite3/db.lock
