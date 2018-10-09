@@ -207,6 +207,18 @@ namespace NestSharp
         /// </summary>
         [JsonProperty("locked_temp_max_f")]
         public float LockedTempMaximumFarenheit { get; set; }
-}
+
+        /// <summary>
+        /// Display name of the device
+        /// </summary>
+        [JsonProperty("where_name")]
+        public string WhereName { get; set; }
+
+        /// <summary>
+        /// Display label of the device
+        /// </summary>
+        [JsonProperty("label")]
+        public string Label { get; set; }
+    }
     
 }
