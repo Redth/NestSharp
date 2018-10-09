@@ -189,6 +189,36 @@ namespace NestSharp
         /// </summary>
         [JsonProperty ("humidity")]
         public float Humidity { get;set; }
+
+        /// <summary>
+        /// Device locked status with the Nest Service
+        /// </summary>
+        [JsonProperty("is_locked")]
+        public bool IsLocked { get; set; }
+
+        /// <summary>
+        /// Temperature, minimum at the device, in whole degrees Fahrenheit (1°f)
+        /// </summary>
+        [JsonProperty("locked_temp_min_f")]
+        public float LockedTempMinimumFarenheit { get; set; }
+
+        /// <summary>
+        /// Temperature, maximum at the device, in whole degrees Fahrenheit (1°f)
+        /// </summary>
+        [JsonProperty("locked_temp_max_f")]
+        public float LockedTempMaximumFarenheit { get; set; }
+
+        /// <summary>
+        /// Display name of the device
+        /// </summary>
+        [JsonProperty("where_name")]
+        public string WhereName { get; set; }
+
+        /// <summary>
+        /// Display label of the device
+        /// </summary>
+        [JsonProperty("label")]
+        public string Label { get; set; }
     }
     
 }
